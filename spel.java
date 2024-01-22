@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class spel {
+
     public static void main(String[] args) throws Exception {
         try (Scanner tangentbord = new Scanner(System.in)) {
             System.out.println(" +------------------------------+");
@@ -28,7 +29,7 @@ public class spel {
             Random kort = new Random();
             int slump = kort.nextInt(14);
             Random kort_1 = new Random();
-            int slump2 = kort_1.nextInt(14);
+            int slump2 = kort_1.nextInt(13);
             int randomNum = (int)(Math.random()*5);
             int randomNum2 = (int)(Math.random()*5);
             String kort1 = value[slump];
