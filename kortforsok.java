@@ -2,15 +2,36 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class kortforsok {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        StartScreen();
         Myrandom();
+        Thread.sleep(500);
         Myrandom();
-        System.out.println("dealer has");
-        Myrandom();
-        Myrandom();
+        Thread.sleep(500);
+        System.out.println("you have a score of: ");
+        Thread.sleep(500);
+        AnotherCard(args);
+        /* 
+        if (playerHand >21){
+          System.out.println("you bust!");
+          System.out.println("Dealer wins");
+        } else if (playedHand == 21){
+          System.out.println("You hit 21!")
+          System.out.println("You win 1.5x")
+          playerMoney = playerMoney + playerBet*1.5;
+        } else if (playerhand < 21){
+          System.out.println("Do you want another card?")
+
+        }
+        */
+        Thread.sleep(500);
+        //System.out.println("Do you want another card?");
+        //System.out.println(playerHand);
+        //System.out.println("dealer has");
+
         //System.out.println(Myrandom(0));
       }
-        static int Myrandom(){
+        static void Myrandom(){
           String[] color = {"hearts", "spades","clover","diamonds"};
           String[] value = {"2","3","4","5","6","7","8","9","10","J","Q","K","A"};
           Random kort = new Random();
@@ -54,7 +75,60 @@ public class kortforsok {
               break;
           }
           //System.out.println(playerHand);
-          return playerHand;
         }
-    
+        public static void StartScreen() throws Exception{
+          try (Scanner tangentbord = new Scanner(System.in)) {
+            System.out.println(" +------------------------------+");
+            System.out.println(" I    Welcome to blackjack      I");
+            System.out.println(" +------------------------------+");
+            Thread.sleep(1000);
+            System.out.println(" +------------------------------+");
+            System.out.println(" I         Start game?          I");
+            System.out.println(" +------------------------------+");
+            Thread.sleep(1000);
+            System.out.println(" +--------------+---------------+");
+            System.out.println(" I     YES      I      NO       I");
+            System.out.println(" +--------------+---------------+");
+            String val1 = tangentbord.nextLine();
+            if(val1.equalsIgnoreCase("yes")){
+              Thread.sleep(100);
+              int playerMoney = 1000;
+              System.out.println("You have "+playerMoney+" money");
+              Thread.sleep(250);
+              System.out.println("How mutch do you want to bet?");
+              int playerBet = tangentbord.nextInt();
+              if (playerBet > playerMoney){
+                Thread.sleep(500);
+                System.out.println("You dont have enough money!");
+                Thread.sleep(250);
+                System.out.println("Bet again");
+              } else if (playerBet <= playerMoney){
+                playerMoney = playerMoney-playerBet;
+                System.out.println("ok lets start");
+                Thread.sleep(1000);
+                System.out.println("Here are your cards");
+                Thread.sleep(250);
+              }
+            } else {
+                System.out.println("come back later");
+                Thread.sleep(1000);
+            }
+        }
+      }
+      public static void AnotherCard(String[] args) throws Exception{
+        System.out.println("you have a score of: ");
+      /*
+        if (playerHand >21){
+          System.out.println("you bust!");
+          System.out.println("Dealer wins");
+        } else if (playedHand == 21){
+          System.out.println("You hit 21!")
+          System.out.println("You win 1.5x")
+          playerMoney = playerMoney + playerBet*1.5;
+        } else if (playerhand < 21){
+          System.out.println("Do you want another card?")
+
+        }
+        */
+      }
 }
