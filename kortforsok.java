@@ -2,15 +2,14 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class kortforsok {
+  //public static int playedHand = 0;
     public static void main(String[] args) throws Exception {
         StartScreen();
         Myrandom();
         Thread.sleep(500);
         Myrandom();
         Thread.sleep(500);
-        System.out.println("you have a score of: ");
-        Thread.sleep(500);
-        AnotherCard(args);
+        AnotherCard();
         /* 
         if (playerHand >21){
           System.out.println("you bust!");
@@ -74,23 +73,25 @@ public class kortforsok {
               default :
               break;
           }
-          //System.out.println(playerHand);
+          System.out.println(playerHand);
         }
         public static void StartScreen() throws Exception{
           try (Scanner tangentbord = new Scanner(System.in)) {
-            System.out.println(" +------------------------------+");
-            System.out.println(" I    Welcome to blackjack      I");
-            System.out.println(" +------------------------------+");
+            System.out.println(" +----------------------------------+");
+            System.out.println(" I                                  I");
+            System.out.println(" I       Welcome to blackjack       I");
+            System.out.println(" I                                  I");
+            System.out.println(" +----------------------------------+");
             Thread.sleep(1000);
-            System.out.println(" +------------------------------+");
-            System.out.println(" I         Start game?          I");
-            System.out.println(" +------------------------------+");
+            System.out.println("   +---------------------------+");
+            System.out.println("   I        Start game?        I");
+            System.out.println("   +---------------------------+");
             Thread.sleep(1000);
-            System.out.println(" +--------------+---------------+");
-            System.out.println(" I     YES      I      NO       I");
-            System.out.println(" +--------------+---------------+");
+            System.out.println(" +-------------+    +-------------+");
+            System.out.println(" I     YES     I    I     N O     I");
+            System.out.println(" +-------------+    +-------------+");
             String val1 = tangentbord.nextLine();
-            if(val1.equalsIgnoreCase("yes")){
+            if (val1.equalsIgnoreCase("yes")){
               Thread.sleep(100);
               int playerMoney = 1000;
               System.out.println("You have "+playerMoney+" money");
@@ -112,12 +113,58 @@ public class kortforsok {
             } else {
                 System.out.println("come back later");
                 Thread.sleep(1000);
+                StartScreen();
             }
         }
       }
-      public static void AnotherCard(String[] args) throws Exception{
+
+      public static void AnotherCard() throws Exception{
+         try (Scanner tangentbord = new Scanner(System.in)) {
         System.out.println("you have a score of: ");
-      /*
+        Thread.sleep(500);
+        System.out.println("Do you want another card?");
+        Thread.sleep(500);
+        //String val2 = tangentbord.nextLine();
+        /* 
+        //if (val2.equalsIgnoreCase("yes")){
+          //Thread.sleep(100);
+          System.out.println("Ok here is your next card:");
+          Thread.sleep(500);
+          Myrandom();
+          Thread.sleep(500);
+          AnotherCard();
+          
+        } else {
+          */
+          //Thread.sleep(500);
+          System.out.println("Ok dealers turn!");
+          Thread.sleep(1000);
+          System.out.println("Dealers cards:");
+          Myrandom();
+          Myrandom();
+          
+        //}
+
+            /* 
+            String val2 = tangentbord.nextLine();
+            System.out.println(val2);
+            /* 
+            String val1 = tangentbord.nextLine();
+        
+        if (val1.equalsIgnoreCase("yes")){
+          Thread.sleep(100);
+          System.out.println("Ok here is your next card:");
+          Thread.sleep(500);
+          Myrandom();
+        } else {
+          Thread.sleep(500);
+          System.out.println("Ok dealers turn!");
+          Thread.sleep(1000);
+          System.out.println("Dealers cards:");
+          Myrandom();
+          Myrandom();
+        }
+        /*
         if (playerHand >21){
           System.out.println("you bust!");
           System.out.println("Dealer wins");
@@ -130,5 +177,6 @@ public class kortforsok {
 
         }
         */
+        }
       }
 }
