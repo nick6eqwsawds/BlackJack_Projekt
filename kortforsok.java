@@ -2,12 +2,15 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class kortforsok {
-  //public static int playedHand = 0;
+  static final Scanner tangentbord = new Scanner(System.in);
+  static final int playerHand = 0;
+  static final int playedHand1 = playerHand+0;
+    //public static int playedHand = 0;
     public static void main(String[] args) throws Exception {
         StartScreen();
-        Myrandom();
+        Myrandom(playerHand);
         Thread.sleep(500);
-        Myrandom();
+        Myrandom(playerHand);
         Thread.sleep(500);
         AnotherCard();
         /* 
@@ -30,7 +33,7 @@ public class kortforsok {
 
         //System.out.println(Myrandom(0));
       }
-        static void Myrandom(){
+        static void Myrandom(int playerHand){
           String[] color = {"hearts", "spades","clover","diamonds"};
           String[] value = {"2","3","4","5","6","7","8","9","10","J","Q","K","A"};
           Random kort = new Random();
@@ -38,7 +41,7 @@ public class kortforsok {
           int randomNum2 = (int)(Math.random()*4);
           String kort1 = value[slump];
           System.out.println(value[slump]+" "+color[randomNum2]);
-          int playerHand = 0;
+          //int playerHand = 0;
           switch (kort1){
               case "2":
                 playerHand+=2;
@@ -73,10 +76,53 @@ public class kortforsok {
               default :
               break;
           }
-          System.out.println(playerHand);
+          //System.out.println(playerHand);
         }
+        public static void AnotherCard() throws Exception{
+            System.out.println("you have a score of: "+ playerHand);
+            Thread.sleep(500);
+            System.out.println("Do you want another card?");
+            tangentbord.nextLine();
+            Thread.sleep(500);
+            String val2 = tangentbord.nextLine();
+            //String val3 = "yes";
+            if (val2.equalsIgnoreCase("yes")){
+              Thread.sleep(100);
+              System.out.println("Ok here is your next card:");
+              Thread.sleep(500);
+              Myrandom(playerHand);
+              Thread.sleep(500);
+              AnotherCard();
+              
+            } else {
+              Thread.sleep(500);
+              System.out.println("Ok dealers turn!");
+              Thread.sleep(1000);
+              System.out.println("Dealers cards:");
+              Myrandom(playerHand);
+              Myrandom(playerHand);
+              
+            }
+          }
+          //}
+  
+          /*
+          if (playerHand >21){
+            System.out.println("you bust!");
+            System.out.println("Dealer wins");
+          } else if (playedHand == 21){
+            System.out.println("You hit 21!")
+            System.out.println("You win 1.5x")
+            playerMoney = playerMoney + playerBet*1.5;
+          } else if (playerhand < 21){
+            System.out.println("Do you want another card?")
+  
+          }
+          */
+          
+
         public static void StartScreen() throws Exception{
-          try (Scanner tangentbord = new Scanner(System.in)) {
+          //try (Scanner tangentbord = new Scanner(System.in)) {
             System.out.println(" +----------------------------------+");
             System.out.println(" I                                  I");
             System.out.println(" I       Welcome to blackjack       I");
@@ -116,67 +162,9 @@ public class kortforsok {
                 StartScreen();
             }
         }
-      }
-
-      public static void AnotherCard() throws Exception{
-         try (Scanner tangentbord = new Scanner(System.in)) {
-        System.out.println("you have a score of: ");
-        Thread.sleep(500);
-        System.out.println("Do you want another card?");
-        Thread.sleep(500);
-        //String val2 = tangentbord.nextLine();
-        /* 
-        //if (val2.equalsIgnoreCase("yes")){
-          //Thread.sleep(100);
-          System.out.println("Ok here is your next card:");
-          Thread.sleep(500);
-          Myrandom();
-          Thread.sleep(500);
-          AnotherCard();
-          
-        } else {
-          */
-          //Thread.sleep(500);
-          System.out.println("Ok dealers turn!");
-          Thread.sleep(1000);
-          System.out.println("Dealers cards:");
-          Myrandom();
-          Myrandom();
-          
-        //}
-
-            /* 
-            String val2 = tangentbord.nextLine();
-            System.out.println(val2);
-            /* 
-            String val1 = tangentbord.nextLine();
-        
-        if (val1.equalsIgnoreCase("yes")){
-          Thread.sleep(100);
-          System.out.println("Ok here is your next card:");
-          Thread.sleep(500);
-          Myrandom();
-        } else {
-          Thread.sleep(500);
-          System.out.println("Ok dealers turn!");
-          Thread.sleep(1000);
-          System.out.println("Dealers cards:");
-          Myrandom();
-          Myrandom();
         }
-        /*
-        if (playerHand >21){
-          System.out.println("you bust!");
-          System.out.println("Dealer wins");
-        } else if (playedHand == 21){
-          System.out.println("You hit 21!")
-          System.out.println("You win 1.5x")
-          playerMoney = playerMoney + playerBet*1.5;
-        } else if (playerhand < 21){
-          System.out.println("Do you want another card?")
+      //}
 
-        }
-        */
-        }
-      }
-}
+      
+      
+
