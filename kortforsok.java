@@ -3,14 +3,13 @@ import java.util.Random;
 
 public class kortforsok {
   static final Scanner tangentbord = new Scanner(System.in);
-  static final int playerHand = 0;
-  static final int playedHand1 = playerHand+0;
+  static int playerHand = 0;
     //public static int playedHand = 0;
     public static void main(String[] args) throws Exception {
         StartScreen();
-        Myrandom(playerHand);
+        Myrandom();
         Thread.sleep(500);
-        Myrandom(playerHand);
+        Myrandom();
         Thread.sleep(500);
         AnotherCard();
         /* 
@@ -33,7 +32,7 @@ public class kortforsok {
 
         //System.out.println(Myrandom(0));
       }
-        static void Myrandom(int playerHand){
+        static void Myrandom(){
           String[] color = {"hearts", "spades","clover","diamonds"};
           String[] value = {"2","3","4","5","6","7","8","9","10","J","Q","K","A"};
           Random kort = new Random();
@@ -76,11 +75,21 @@ public class kortforsok {
               default :
               break;
           }
+          //return playerHand;
           //System.out.println(playerHand);
+          //int playerHand1=playerHand;
         }
         public static void AnotherCard() throws Exception{
-            System.out.println("you have a score of: "+ playerHand);
+          int playerHand1 = playerHand;
+            System.out.println("you have a score of: "+ playerHand1);
             Thread.sleep(500);
+            if (playerHand1 > 21){
+              System.out.println("You Bust!");
+              Thread.sleep(1000);
+              System.out.println("Try again next time!");
+              Thread.sleep(1000);
+              StartScreen();
+            } else {
             System.out.println("Do you want another card?");
             tangentbord.nextLine();
             Thread.sleep(500);
@@ -90,20 +99,42 @@ public class kortforsok {
               Thread.sleep(100);
               System.out.println("Ok here is your next card:");
               Thread.sleep(500);
-              Myrandom(playerHand);
+              Myrandom();
               Thread.sleep(500);
               AnotherCard();
               
             } else {
+              playerHand = 0;
               Thread.sleep(500);
               System.out.println("Ok dealers turn!");
               Thread.sleep(1000);
               System.out.println("Dealers cards:");
-              Myrandom(playerHand);
-              Myrandom(playerHand);
-              
+              Myrandom();
+              Myrandom();
+              int dealerHand = playerHand;
+              System.out.println("Dealer score is "+dealerHand);
+              if (dealerHand < 16){
+                Myrandom();
+                 dealerHand=playerHand+0;
+                System.out.println("Dealer score is "+dealerHand);
+              } else if (dealerHand > 21){
+                System.out.println("Dealer Busts!");
+                Thread.sleep(500);
+                System.out.println("Player wins!");
+              } else {
+                if (dealerHand == playerHand1){
+                  System.out.println("Dealer and player have same score");
+                  Thread.sleep(500);
+                  System.out.println("You win beting money");
+              } else if (playerHand1 > dealerHand){
+                  System.out.println("player wins");
+                } else {
+                  System.out.println("Dealer wins!");
+                }
+              }
             }
           }
+        }
           //}
   
           /*
@@ -163,8 +194,3 @@ public class kortforsok {
             }
         }
         }
-      //}
-
-      
-      
-
