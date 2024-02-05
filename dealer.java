@@ -1,14 +1,13 @@
 import java.util.Scanner;
 import java.util.Random;
 
-public class kortforsok {
+public class dealer {
   static final Scanner tangentbord = new Scanner(System.in);
   static int playerHand = 0;
   static int playerMoney = 1000;
   static int playerBet = 0;
     //public static int playedHand = 0;
     public static void main(String[] args) throws Exception {
-        StartScreen();
         Myrandom();
         Thread.sleep(500);
         Myrandom();
@@ -63,14 +62,9 @@ public class kortforsok {
 
         public static void AnotherCard() throws Exception{
           int playerHand1 = playerHand;
+          for (playerHand1 = playerHand; playerHand1 < 22;){
             System.out.println("you have a score of: "+ playerHand1);
             Thread.sleep(500);
-            if (playerHand1 > 21){
-              System.out.println("You Bust!");
-              Thread.sleep(1000);
-              System.out.println("Try again next time!");
-              Thread.sleep(1000);
-            } else {
             System.out.println("Do you want another card?");
             tangentbord.nextLine();
             Thread.sleep(500);
@@ -80,9 +74,10 @@ public class kortforsok {
               System.out.println("Ok here is your next card:");
               Thread.sleep(500);
               Myrandom();
+              playerHand1=playerHand;
               Thread.sleep(500);
               AnotherCard();
-              
+            
             } else {
               playerHand = 0;
               Thread.sleep(500);
@@ -92,12 +87,15 @@ public class kortforsok {
               Myrandom();
               Myrandom();
               int dealerHand = playerHand;
-              System.out.println("Dealer score is "+dealerHand);
-              if (dealerHand < 16){
+              for(dealerHand = playerHand; dealerHand < 22;){
+              for (dealerHand = playerHand; dealerHand <16;){
                 Myrandom();
-                 dealerHand=playerHand+0;
-                System.out.println("Dealer score is "+dealerHand);
-              } else if (dealerHand > 21){
+                Thread.sleep(500);
+                dealerHand=playerHand;
+              }
+              System.out.println("Dealer score is "+dealerHand);
+              
+               if (dealerHand > 21){
                 System.out.println("Dealer Busts!");
                 Thread.sleep(500);
                 System.out.println("Player wins!");
@@ -118,50 +116,9 @@ public class kortforsok {
                   System.out.println("Dealer wins!");
                   System.out.println("money: "+playerMoney);
                 }
+            }
               }
             }
           }
         }
-         
-
-        public static void StartScreen() throws Exception{
-            System.out.println(" +----------------------------------+");
-            System.out.println(" I                                  I");
-            System.out.println(" I       Welcome to blackjack       I");
-            System.out.println(" I                                  I");
-            System.out.println(" +----------------------------------+");
-            Thread.sleep(1000);
-            System.out.println("   +---------------------------+");
-            System.out.println("   I        Start game?        I");
-            System.out.println("   +---------------------------+");
-            Thread.sleep(1000);
-            System.out.println(" +-------------+    +-------------+");
-            System.out.println(" I     YES     I    I     N O     I");
-            System.out.println(" +-------------+    +-------------+");
-            String val1 = tangentbord.nextLine();
-            if (val1.equalsIgnoreCase("yes")){
-              Thread.sleep(100);
-              System.out.println("You have "+playerMoney+" money");
-              Thread.sleep(250);
-              System.out.println("How mutch do you want to bet?");
-              int playerBet = tangentbord.nextInt();
-              if (playerBet > playerMoney){
-                Thread.sleep(500);
-                System.out.println("You dont have enough money!");
-                Thread.sleep(250);
-                System.out.println("Bet again");
-              } else if (playerBet <= playerMoney){
-                playerMoney = playerMoney-playerBet;
-                System.out.println("ok lets start");
-                System.out.println(playerBet);
-                Thread.sleep(1000);
-                System.out.println("Here are your cards");
-                Thread.sleep(250);
-              }
-            } else {
-                System.out.println("come back later");
-                Thread.sleep(1000);
-                StartScreen();
-            }
-        }
-        }
+}
