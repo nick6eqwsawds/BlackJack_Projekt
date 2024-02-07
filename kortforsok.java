@@ -6,9 +6,13 @@ public class kortforsok {
   static int playerHand = 0;
   static int playerMoney = 1000;
   static int playerBet = 0;
+  static int startscreen = 1;
     //public static int playedHand = 0;
     public static void main(String[] args) throws Exception {
+      while (startscreen == 1)
+      {
         StartScreen();
+      }
         Myrandom();
         Thread.sleep(500);
         Myrandom();
@@ -135,9 +139,9 @@ public class kortforsok {
             System.out.println("   I        Start game?        I");
             System.out.println("   +---------------------------+");
             Thread.sleep(1000);
-            System.out.println(" +-------------+    +-------------+");
-            System.out.println(" I     YES     I    I     N O     I");
-            System.out.println(" +-------------+    +-------------+");
+            System.out.println(" +-------------+      +------------+");
+            System.out.println(" I     YES     I  or  I     NO     I");
+            System.out.println(" +-------------+      +------------+");
             String val1 = tangentbord.nextLine();
             if (val1.equalsIgnoreCase("yes")){
               Thread.sleep(100);
@@ -156,6 +160,7 @@ public class kortforsok {
                 System.out.println(playerBet);
                 Thread.sleep(1000);
                 System.out.println("Here are your cards");
+                startscreen = 0;
                 Thread.sleep(250);
               }
             } else {

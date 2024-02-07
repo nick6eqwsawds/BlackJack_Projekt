@@ -6,14 +6,11 @@ public class dealer {
   static int playerHand = 0;
   static int playerMoney = 1000;
   static int playerBet = 0;
-    //public static int playedHand = 0;
+  static int spelet = 2;
     public static void main(String[] args) throws Exception {
-        Myrandom();
-        Thread.sleep(500);
-        Myrandom();
-        Thread.sleep(500);
-        AnotherCard();
-        Thread.sleep(500);
+      while (spelet == 2) {
+        PlayerTurn();
+      }
       }
 
         static void Myrandom(){
@@ -60,13 +57,52 @@ public class dealer {
           }
         }
 
+        public static void PlayerTurn() throws Exception {
+          Thread.sleep(500);
+          System.out.println("You Have "+playerMoney+"$$");
+          Thread.sleep(500);
+          System.out.println("How Mutch Do You Want To Bet?");
+          Thread.sleep(500);
+          //System.out.println("Bet:");
+          playerBet = tangentbord.nextInt();
+          Thread.sleep(500);
+          if(playerBet <= playerMoney){
+          System.out.println("Do you want to bet "+playerBet+"$$ ?");
+          tangentbord.nextLine();
+          String BettingVal = tangentbord.nextLine();
+          if(BettingVal.equalsIgnoreCase("yes")){
+            Thread.sleep(500);
+            System.out.println("Ok Lets Start!");
+            playerMoney = playerMoney-playerBet;
+            playerHand=0;
+            Myrandom();
+            Myrandom();
+            //spelet = 3;
+            AnotherCard();
+          } else {
+            Thread.sleep(500);
+            System.out.println("Ok");
+            PlayerTurn();
+          }
+        } else {
+          System.out.println("You dont have enough money");
+          PlayerTurn();
+        }
+
+        }
+
+        public static void Start() throws Exception {
+          Thread.sleep(1000);
+          System.out.println("do you want to play?");
+        }
+
         public static void AnotherCard() throws Exception{
           int playerHand1 = playerHand;
-          for (playerHand1 = playerHand; playerHand1 < 22;){
+          if (playerHand1 < 22){
             System.out.println("you have a score of: "+ playerHand1);
             Thread.sleep(500);
             System.out.println("Do you want another card?");
-            tangentbord.nextLine();
+            //tangentbord.nextLine();
             Thread.sleep(500);
             String val2 = tangentbord.nextLine();
             if (val2.equalsIgnoreCase("yes")){
@@ -89,8 +125,8 @@ public class dealer {
               int dealerHand = playerHand;
               for(dealerHand = playerHand; dealerHand < 22;){
               for (dealerHand = playerHand; dealerHand <16;){
+                Thread.sleep(1000);
                 Myrandom();
-                Thread.sleep(500);
                 dealerHand=playerHand;
               }
               System.out.println("Dealer score is "+dealerHand);
@@ -101,6 +137,7 @@ public class dealer {
                 System.out.println("Player wins!");
                 playerMoney = playerMoney+playerBet*2;
                 System.out.println("money: "+playerMoney);
+                PlayerTurn();
               } else {
                 if (dealerHand == playerHand1){
                   System.out.println("Dealer and player have same score");
@@ -108,17 +145,24 @@ public class dealer {
                   System.out.println("You win beting money");
                   playerMoney=playerMoney+playerBet;
                   System.out.println("money: "+playerMoney);
+                  PlayerTurn();
               } else if (playerHand1 > dealerHand){
                   System.out.println("player wins");
                   playerMoney=playerMoney+playerBet*2;
                   System.out.println("money: "+playerMoney);
+                  PlayerTurn();
                 } else {
                   System.out.println("Dealer wins!");
                   System.out.println("money: "+playerMoney);
+                  PlayerTurn();
                 }
             }
               }
             }
+          } else {
+            Thread.sleep(1000);
+            System.out.println("Player Busts");
+            PlayerTurn();
           }
         }
 }
