@@ -8,9 +8,15 @@ public class dealer {
   static int playerBet = 0;
   static int spelet = 2;
     public static void main(String[] args) throws Exception {
-      while (spelet == 2) {
-        PlayerTurn();
-      }
+      while (spelet == 2){
+        Start();
+        //PlayerTurn();
+    }
+    
+    while (spelet==1) {
+      Leaderboard();
+      spelet = 0;
+    }
       }
 
         static void Myrandom(){
@@ -59,15 +65,25 @@ public class dealer {
 
         public static void PlayerTurn() throws Exception {
           Thread.sleep(500);
-          System.out.println("You Have "+playerMoney+"$$");
+          System.out.println("You Have "+playerMoney+" $$");
           Thread.sleep(500);
           System.out.println("How Mutch Do You Want To Bet?");
           Thread.sleep(500);
-          //System.out.println("Bet:");
-          playerBet = tangentbord.nextInt();
+          while(true){
+            try{
+              playerBet = tangentbord.nextInt();
+              break;
+            }catch(Exception e){
+              tangentbord.nextLine();
+              System.out.println("Input a number");
+              Thread.sleep(500);
+              System.out.println("You have "+playerMoney+" $");
+              
+            }
+          }
           Thread.sleep(500);
           if(playerBet <= playerMoney){
-          System.out.println("Do you want to bet "+playerBet+"$$ ?");
+          System.out.println("Do you want to bet "+playerBet+" $$?");
           tangentbord.nextLine();
           String BettingVal = tangentbord.nextLine();
           if(BettingVal.equalsIgnoreCase("yes")){
@@ -77,7 +93,6 @@ public class dealer {
             playerHand=0;
             Myrandom();
             Myrandom();
-            //spelet = 3;
             AnotherCard();
           } else {
             Thread.sleep(500);
@@ -92,17 +107,95 @@ public class dealer {
         }
 
         public static void Start() throws Exception {
-          Thread.sleep(1000);
-          System.out.println("do you want to play?");
-        }
+          System.out.println("          _____                                                                                   _____ \r\n" + //
+                             "         ( ___ )---------------------------------------------------------------------------------( ___ )\r\n" + //
+                             "          |   |                                                                                   |   | \r\n" + //
+                             "          |   |  __     __     ______     __         ______     ______     __    __     ______    |   | \r\n" + //
+                             "          |   | /\\ \\  _ \\ \\   /\\  ___\\   /\\ \\       /\\  ___\\   /\\  __ \\   /\\ \"-./  \\   /\\  ___\\   |   | \r\n" + //
+                             "          |   | \\ \\ \\/ \".\\ \\  \\ \\  __\\   \\ \\ \\____  \\ \\ \\____  \\ \\ \\/\\ \\  \\ \\ \\-./\\ \\  \\ \\  __\\   |   | \r\n" + //
+                             "          |   |  \\ \\__/\".~\\_\\  \\ \\_____\\  \\ \\_____\\  \\ \\_____\\  \\ \\_____\\  \\ \\_\\ \\ \\_\\  \\ \\_____\\ |   | \r\n" + //
+                             "          |   |   \\/_/   \\/_/   \\/_____/   \\/_____/   \\/_____/   \\/_____/   \\/_/  \\/_/   \\/_____/ |   | \r\n" + //
+                             "          |   |                                                                                   |   | \r\n" + //
+                             "          |   |                                 ______   ______                                   |   | \r\n" + //
+                             "          |   |                                /\\__  _\\ /\\  __ \\                                  |   | \r\n" + //
+                             "          |   |                                \\/_/\\ \\/ \\ \\ \\/\\ \\                                 |   | \r\n" + //
+                             "          |   |                                   \\ \\_\\  \\ \\_____\\                                |   | \r\n" + //
+                             "          |   |                                    \\/_/   \\/_____/                                |   | \r\n" + //
+                             "          |___|                                                                                   |___| \r\n" + //
+                             "         (_____)---------------------------------------------------------------------------------(_____)");
+          Thread.sleep(1750);
+          System.out.println("  _____                                                                                                  _____ \r\n" + //
+                             " ( ___ )------------------------------------------------------------------------------------------------( ___ )\r\n" + //
+                             "  |   |                                                                                                  |   | \r\n" + //
+                             "  |   |  ______     __         ______     ______     __  __       __     ______     ______     __  __    |   | \r\n" + //
+                             "  |   | /\\  == \\   /\\ \\       /\\  __ \\   /\\  ___\\   /\\ \\/ /      /\\ \\   /\\  __ \\   /\\  ___\\   /\\ \\/ /    |   | \r\n" + //
+                             "  |   | \\ \\  __<   \\ \\ \\____  \\ \\  __ \\  \\ \\ \\____  \\ \\  _\"-.   _\\_\\ \\  \\ \\  __ \\  \\ \\ \\____  \\ \\  _\"-.  |   | \r\n" + //
+                             "  |   |  \\ \\_____\\  \\ \\_____\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\_\\ \\_\\ /\\_____\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\_\\ \\_\\ |   | \r\n" + //
+                             "  |   |   \\/_____/   \\/_____/   \\/_/\\/_/   \\/_____/   \\/_/\\/_/ \\/_____/   \\/_/\\/_/   \\/_____/   \\/_/\\/_/ |   | \r\n" + //
+                             "  |___|                                                                                                  |___| \r\n" + //
+                             " (_____)------------------------------------------------------------------------------------------------(_____)");
+                             Thread.sleep(1750);
+                             System.out.println("                          _____                                                    _____ \r\n" + //
+                                 "                         ( ___ )--------------------------------------------------( ___ )\r\n" + //
+                                 "                          |   |                                                    |   | \r\n" + //
+                                 "                          |   |  ______     ______   ______     ______     ______  |   | \r\n" + //
+                                 "                          |   | /\\  ___\\   /\\__  _\\ /\\  __ \\   /\\  == \\   /\\__  _\\ |   | \r\n" + //
+                                 "                          |   | \\ \\___  \\  \\/_/\\ \\/ \\ \\  __ \\  \\ \\  __<   \\/_/\\ \\/ |   | \r\n" + //
+                                 "                          |   |  \\/\\_____\\    \\ \\_\\  \\ \\_\\ \\_\\  \\ \\_\\ \\_\\    \\ \\_\\ |   | \r\n" + //
+                                 "                          |   |   \\/_____/     \\/_/   \\/_/\\/_/   \\/_/ /_/     \\/_/ |   | \r\n" + //
+                                 "                          |___|                                                    |___| \r\n" + //
+                                 "                         (_____)--------------------------------------------------(_____)");
+                                 Thread.sleep(1000);
+                                 System.out.println(" _____                                  _____                               _____                        _____ \r\n" + //
+                                     "( ___ )--------------------------------( ___ )                             ( ___ )----------------------( ___ )\r\n" + //
+                                     " |   |                                  |   |                               |   |                        |   | \r\n" + //
+                                     " |   |  __  __     ______     ______    |   |                               |   |  __   __     ______    |   | \r\n" + //
+                                     " |   | /\\ \\_\\ \\   /\\  ___\\   /\\  ___\\   |   |                               |   | /\\ \"-.\\ \\   /\\  __ \\   |   | \r\n" + //
+                                     " |   | \\ \\____ \\  \\ \\  __\\   \\ \\___  \\  |   |              OR               |   | \\ \\ \\-.  \\  \\ \\ \\/\\ \\  |   | \r\n" + //
+                                     " |   |  \\/\\_____\\  \\ \\_____\\  \\/\\_____\\ |   |                               |   |  \\ \\_\\\\\"\\_\\  \\ \\_____\\ |   | \r\n" + //
+                                     " |   |   \\/_____/   \\/_____/   \\/_____/ |   |                               |   |   \\/_/ \\/_/   \\/_____/ |   | \r\n" + //
+                                     " |___|                                  |___|                               |___|                        |___| \r\n" + //
+                                     "(_____)--------------------------------(_____)                             (_____)----------------------(_____)");
+       
+                                    Thread.sleep(500);
+                                    String starta = tangentbord.nextLine();
+                                    if (starta.equalsIgnoreCase("yes") || starta.equalsIgnoreCase("y")){
+                                      Thread.sleep(500);
+                                      System.out.println("Ok");
+                                      PlayerTurn();
+                                    } else {
+                                      Thread.sleep(1000);
+                                      System.out.println("Okay come back when you want to play!");
+                                      Thread.sleep(500);
+                                      Start();
+                                    }
+                         }
+
+         public static void PlayAgain() throws Exception{
+          Thread.sleep(500);
+          System.out.println("Do you want to play again?");
+          String startaigen = tangentbord.nextLine();
+            if (startaigen.equalsIgnoreCase("yes")){
+                Thread.sleep(500);
+                System.out.println("Ok");
+                Thread.sleep(500);
+                PlayerTurn();
+                } else {
+                Thread.sleep(1000);
+                System.out.println("Okay come back when you want to play!");
+                Thread.sleep(500);
+                //Leaderboard();
+                spelet=spelet-1;
+                }
+          }
 
         public static void AnotherCard() throws Exception{
           int playerHand1 = playerHand;
+          if (spelet == 2){
           if (playerHand1 < 22){
             System.out.println("you have a score of: "+ playerHand1);
             Thread.sleep(500);
             System.out.println("Do you want another card?");
-            //tangentbord.nextLine();
             Thread.sleep(500);
             String val2 = tangentbord.nextLine();
             if (val2.equalsIgnoreCase("yes")){
@@ -121,8 +214,10 @@ public class dealer {
               Thread.sleep(1000);
               System.out.println("Dealers cards:");
               Myrandom();
+              Thread.sleep(500);
               Myrandom();
               int dealerHand = playerHand;
+              if (dealerHand<22){
               for(dealerHand = playerHand; dealerHand < 22;){
               for (dealerHand = playerHand; dealerHand <16;){
                 Thread.sleep(1000);
@@ -137,32 +232,47 @@ public class dealer {
                 System.out.println("Player wins!");
                 playerMoney = playerMoney+playerBet*2;
                 System.out.println("money: "+playerMoney);
-                PlayerTurn();
-              } else {
-                if (dealerHand == playerHand1){
+                PlayAgain();
+              } else if (dealerHand == playerHand1){
                   System.out.println("Dealer and player have same score");
                   Thread.sleep(500);
                   System.out.println("You win beting money");
                   playerMoney=playerMoney+playerBet;
                   System.out.println("money: "+playerMoney);
-                  PlayerTurn();
+                  PlayAgain();
               } else if (playerHand1 > dealerHand){
                   System.out.println("player wins");
                   playerMoney=playerMoney+playerBet*2;
                   System.out.println("money: "+playerMoney);
-                  PlayerTurn();
+                  PlayAgain();
                 } else {
                   System.out.println("Dealer wins!");
                   System.out.println("money: "+playerMoney);
-                  PlayerTurn();
+                  PlayAgain();
                 }
-            }
               }
             }
+              }
           } else {
             Thread.sleep(1000);
             System.out.println("Player Busts");
-            PlayerTurn();
+            PlayAgain();
           }
+        } else {
+          spelet = 1;
+        }
+        }
+
+        public static void Leaderboard() throws Exception{
+          Thread.sleep(500);
+          System.out.println("Good Job!");
+          Thread.sleep(500);
+          System.out.println("You managed to get "+playerMoney+" $");
+          Thread.sleep(500);
+          System.out.println("Please Enter Username");
+          String Username = tangentbord.nextLine();
+          Thread.sleep(500);
+          System.out.println("Good Work "+Username+", You Managed To Get "+playerMoney+" $$");
+          spelet = 1;
         }
 }
