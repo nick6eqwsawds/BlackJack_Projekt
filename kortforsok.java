@@ -265,3 +265,4 @@ public class kortforsok {
         }
 }
 //hoppas det här funkar nu
+//försöker få det att funka #2
