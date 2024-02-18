@@ -248,7 +248,7 @@ public class slutverision {
                 PlayAgain();
               }
         } 
-
+// leader board som är till när man inte vill spela med
         public static void Leaderboard() throws Exception{
           Thread.sleep(500);
           System.out.println("Good Job!");
